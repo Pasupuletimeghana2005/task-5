@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Responsive Web App with Contact Form</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Global Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    /* Main Container */
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Contact Form Styles */
+    .contact-form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    .contact-form h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .contact-form label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .contact-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #555;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+      }
+
+      .contact-form {
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      .contact-form button {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Responsive Web Application</h1>
+  </header>
+
+  <div class="container">
+    <div class="contact-form">
+      <h2>Contact Us</h2>
+      <form id="contact-form">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+      <p id="response-message" style="color: green; text-align: center; display: none;">Thank you for your message!</p>
+    </div>
+  </div>
+
+  <script>
+    // Form Submission Handler
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent default form submission
+
+      // Gather form data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      // Simple validation
+      if (name === '' || email === '' || message === '') {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Simulate form submission (e.g., AJAX request to a server)
+      console.log('Form submitted:', { name, email, message });
+
+      // Show a success message
+      document.getElementById('response-message').style.display = 'block';
+
+      // Clear form
+      document.getElementById('contact-form').reset();
+    });
+
+    // Lazy loading images (demo)
+    window.addEventListener('load', () => {
+      const images = document.querySelectorAll('img[data-src]');
+      images.forEach((img) => {
+        img.setAttribute('src', img.getAttribute('data-src'));
+        img.onload = () => img.removeAttribute('data-src');
+      });
+    });
+  </script>
+
+</body>
+</html>
